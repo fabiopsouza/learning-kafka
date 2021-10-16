@@ -1,25 +1,36 @@
 package br.com.alura;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class DefaultCommandLineRunner implements CommandLineRunner {
+import lombok.extern.slf4j.Slf4j;
 
-	@Override
-	public void run(String... args) throws Exception {
+@Slf4j
+@Configuration
+public class NewOrderMain {
+
+	public static void main(String... args) throws InterruptedException, ExecutionException {
 		
 		String value = "2323,3232,13121";
 		ProducerRecord<String, String> record = new ProducerRecord<>("ECOMMERCE_NEW_ORDER", value , value);
 		
 		KafkaProducer<String, String> producer = new KafkaProducer<>(properties());
-		producer.send(record);
+		producer.send(record, (data, ex) -> {
+			if(ex != null) {
+				ex.printStackTrace();
+				return;
+			}
+			
+			log.info("Sucesso enviando: " + data.topic() + " ::: " + data.partition() 
+				+ " / " + data.offset() + " / " + data.timestamp());
+			
+		}).get();
 	}
 
 	private static Properties properties() {
