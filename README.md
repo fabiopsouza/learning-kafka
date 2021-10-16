@@ -1,7 +1,6 @@
 # Comandos
 
-- LOCAL DE INSTALAÇÃO
-C:\apps\kafka\kafka_2.12-2.3.1
+- **Local de Instalação**: C:\apps\kafka\kafka_2.12-2.3.1
 
 - CRIAR TÓPICO
 .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic LOJA_NOVO_PEDIDO
