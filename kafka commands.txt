@@ -1,22 +1,20 @@
-# Comandos
-
-- LOCAL DE INSTALAÇÃO
+LOCAL DE INSTALAÇÃO
 C:\apps\kafka\kafka_2.12-2.3.1
 
-- CRIAR TÓPICO
+CRIAR TÓPICO
 .\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic LOJA_NOVO_PEDIDO
 
-- LISTAR TÓPICOS
+LISTAR TÓPICOS
 .\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
 
-- DESCREVER OS TÓPICOS
+DESCREVER OS TÓPICOS
 .\bin\windows\kafka-topics.bat --describe --bootstrap-server localhost:9092
 
-- ENVIAR MENSAGEM
+ENVIAR MENSAGEM
 .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic LOJA_NOVO_PEDIDO
 
-- CONSUMIDOR DE NOVAS MENSAGENS
+CONSUMIDOR DE NOVAS MENSAGENS
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO
 
-- CONSUMIDOR DE TODOS OS PEDIDOS
+CONSUMIDOR DE TODOS OS PEDIDOS
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO --from-beginning
