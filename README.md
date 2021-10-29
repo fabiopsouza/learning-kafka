@@ -1,6 +1,6 @@
 # Kafka Commands
 
-- **Local de Instalação:** C:\apps\kafka\kafka_2.12-2.3.1
+- **Local de Instalação:** C:\apps\kafka_2.12-2.3.1
 
 - **Subir Zookeeper:** .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 
@@ -17,3 +17,7 @@
 - **Consumir de novas mensagens:** .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO
 
 - **Consumir todos os pedidos armazenados:** .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO --from-beginning
+
+- **Alterar as partições de um tópico:** .\bin\windows\kafka-topics.bat --alter -zookeeper localhost:2181 --topic ECOMMERCE_NEW_ORDER --partitions 3
+
+- **Exibir grupos de consumo:** .\bin\windows\kafka-consumer-groups.bat --all-groups --bootstrap-server localhost:9092 --describe
